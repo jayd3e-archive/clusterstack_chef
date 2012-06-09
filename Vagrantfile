@@ -3,7 +3,7 @@ Vagrant::Config.run do |config|
 
     # Boost the RAM slightly and give it a reasonable name
     config.vm.customize [
-        "modifyvm", :id, 
+        "modifyvm", :id,
         "--memory", 1024,
         "--name", "Clusterpunk"
     ]

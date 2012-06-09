@@ -8,34 +8,30 @@
 #   password "pass"
 # end
 
-# Create my user
-user "jayd3e" do
-  comment "Main Dev"
-  uid 1001
-  gid "users"
-  home "/home/jayd3e"
-  shell "/bin/bash"
-  password "$1$GjoyjjTd$NE/SPlYhF3r0zt8NjgRQj."
-end
-
 # Directory where Clusterflunk will be housed.
 directory "/opt/webapp" do
-  owner "jayd3e"
+  owner "vagrant"
   group "users"
   mode "0775"
   action :create
 end
 
-# Checkout code
-git "/opt/webapp" do
-  repository "git@github.com:Clusterflunk/Clusterflunk.git"
-  reference "master"
-  action :sync
-end
-
 # Make virtualenv
 execute "virtualenv" do
-  command "virtualenv --python=/opt/python-2.7.3/bin/python --no-site-packages env"
-  creates "/opt/webapp/Clusterflunk/env"
+  user "vagrant"
+  command "virtualenv --python=/opt/python-2.7.3/bin/python --no-site-packages /opt/webapp/env"
+  creates "/opt/webapp/env"
   action :run
+end
+
+git "/home/vagrant" do
+    repository "git://github.com/Clusterflunk/.dotfiles.git"
+    destination "/home/vagrant/.dotfiles"
+    revision "master"
+    action :sync
+    user "vagrant"
+end
+
+link "/home/vagrant/.profile" do
+  to "/home/vagrant/.dotfiles/.profile"
 end
