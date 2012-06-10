@@ -35,3 +35,13 @@ end
 link "/home/vagrant/.profile" do
   to "/home/vagrant/.dotfiles/.profile"
 end
+
+gem_package "sass" do
+  action :install
+end
+
+# Hack to fix a Vagrant bug
+execute "sudo_bug" do
+  command "sed -i 's/%admin ALL=NOPASSWD:ALL/%admin ALL=\(ALL\) NOPASSWD:ALL/' /etc/sudoers"
+  action :run
+end

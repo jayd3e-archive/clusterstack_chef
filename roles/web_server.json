@@ -2,6 +2,9 @@
     "name": "web_server",
     "json_class": "Chef::Role",
     "run_list": [
-        "role[base]"
+        "role[base]",
+        "recipe[openssl]",
+        "recipe[postgresql]",
+        "recipe[postgresql::server]"
     ]
 }

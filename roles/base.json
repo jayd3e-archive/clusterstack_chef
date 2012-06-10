@@ -2,6 +2,7 @@
     "name": "base",
     "json_class": "Chef::Role",
     "run_list": [
+        "recipe[apt]",
         "recipe[git]",
         "recipe[python]"
     ]

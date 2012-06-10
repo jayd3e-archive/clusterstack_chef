@@ -12,4 +12,7 @@ Vagrant::Config.run do |config|
         chef.roles_path = "roles"
         chef.add_role("clusterflunk_dev")
     end
+
+    config.vm.share_folder "webapp", "/opt/webapp", "~/webapp"
+    config.vm.forward_port 5015, 5015
 end
