@@ -25,7 +25,7 @@ execute "virtualenv" do
 end
 
 git "/home/vagrant" do
-    repository "git://github.com/Clusterflunk/.dotfiles.git"
+    repository "git://github.com/clusterflunk/.dotfiles.git"
     destination "/home/vagrant/.dotfiles"
     revision "master"
     action :sync
