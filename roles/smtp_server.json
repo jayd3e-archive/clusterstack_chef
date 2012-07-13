@@ -1,0 +1,7 @@
+{
+    "name": "smtp_server",
+    "json_class": "Chef::Role",
+    "run_list": [
+        "recipe[postfix]"
+    ]
+}

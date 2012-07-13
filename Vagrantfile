@@ -14,6 +14,5 @@ Vagrant::Config.run do |config|
     end
 
     config.vm.share_folder "webapp", "/opt/webapp", "~/webapp"
-    config.vm.forward_port 5015, 5015
-    config.vm.forward_port 5432, 5432
+    config.vm.network :hostonly, "33.33.33.10"
 end
