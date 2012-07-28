@@ -10,7 +10,7 @@
 
 # Directory where Clusterflunk will be housed.
 directory "/opt/webapp" do
-  owner "vagrant"
+  owner node['clusterflunk']['user']
   group "users"
   mode "0775"
   action :create
@@ -18,22 +18,22 @@ end
 
 # Make virtualenv
 execute "virtualenv" do
-  user "vagrant"
+  user node['clusterflunk']['user']
   command "virtualenv --python=/opt/python-2.7.3/bin/python --no-site-packages /opt/webapp/env"
   creates "/opt/webapp/env"
   action :run
 end
 
-git "/home/vagrant" do
+git "/home/#{node['clusterflunk']['user']}" do
     repository "git://github.com/clusterflunk/.dotfiles.git"
-    destination "/home/vagrant/.dotfiles"
+    destination "/home/#{node['clusterflunk']['user']}/.dotfiles"
     revision "master"
     action :sync
-    user "vagrant"
+    user node['clusterflunk']['user']
 end
 
-link "/home/vagrant/.profile" do
-  to "/home/vagrant/.dotfiles/.profile"
+link "/home/#{node['clusterflunk']['user']}/.profile" do
+  to "/home/#{node['clusterflunk']['user']}/.dotfiles/.profile"
 end
 
 gem_package "sass" do

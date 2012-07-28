@@ -1,5 +1,6 @@
 {
     "name": "clusterflunk_dev",
+    "chef_type": "role",
     "run_list": [
         "role[web_server]",
         "role[smtp_server]",
