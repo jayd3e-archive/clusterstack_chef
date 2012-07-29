@@ -6,6 +6,7 @@
         "role[base]",
         "recipe[openssl]",
         "recipe[postgresql]",
-        "recipe[postgresql::server]"
+        "recipe[postgresql::server]",
+        "recipe[supervisor]"
     ]
 }

@@ -1,0 +1,15 @@
+[program:cheeseprism]
+user = <%= @node['supervisor']['user'] %>
+command = /opt/cheeseprism/bin/python /opt/cheeseprism/bin/pserve /opt/cheeseprism/src/development.ini
+startsecs=5
+startretries=0
+priority = 12
+redirect_stderr = true
+autorestart = true
+stopsignal = HUP
+stopwaitsecs = 10
+directory = /opt/cheeseprism/
+stdout_logfile=/var/log/cheeseprism.log
+stdout_logfile_maxbytes=10MB
+stdout_logfile_backups=10
+stdout_capture_maxbytes=1MB

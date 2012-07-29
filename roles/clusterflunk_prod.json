@@ -1,6 +1,5 @@
 {
     "name": "clusterflunk_dev",
-    "json_class": "Chef::Role",
     "chef_type": "role",
     "run_list": [
         "role[web_server]",

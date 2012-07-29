@@ -1,0 +1,1 @@
+default['clusterflunk']['user'] = 'vagrant'
